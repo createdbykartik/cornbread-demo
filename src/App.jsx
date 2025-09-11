@@ -109,7 +109,7 @@ function App() {
           <form onSubmit={handleLoginSubmit} className="login-form" autoComplete="off">
             <label className="login-field">
               <span>Username</span>
-              <input type="text" value={loginUser} onChange={(e)=>setLoginUser(e.target.value)} placeholder="iman" required />
+              <input type="text" value={loginUser} onChange={(e)=>setLoginUser(e.target.value)} placeholder="Username" required />
             </label>
             <label className="login-field">
               <span>Password</span>
