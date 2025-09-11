@@ -4,16 +4,24 @@ import './App.css';
 import bowlImg from './assets/bowl.svg';
 import jarImg from './assets/jar.svg';
 import cornbreadImg from './assets/cornbread.svg';
+// Ingredient icons imported so production build resolves hashed asset paths
+import cornmealIcon from './assets/ingredients/cornmeal.svg';
+import flourIcon from './assets/ingredients/flour.svg';
+import eggsIcon from './assets/ingredients/eggs.svg';
+import milkIcon from './assets/ingredients/milk.svg';
+import butterIcon from './assets/ingredients/butter.svg';
+import sugarIcon from './assets/ingredients/sugar.svg';
+import bakingPowderIcon from './assets/ingredients/baking_powder.svg';
 // Removed bread strip footer image in favor of a sticky note
 
 const INGREDIENTS = [
-  { name: 'Cornmeal', color: '#FFD700', icon: 'cornmeal.svg' },
-  { name: 'Flour', color: '#FFF8DC', icon: 'flour.svg' },
-  { name: 'Eggs', color: '#FFEB3B', icon: 'eggs.svg' },
-  { name: 'Milk', color: '#B3E5FC', icon: 'milk.svg' },
-  { name: 'Butter', color: '#FFE4B5', icon: 'butter.svg' },
-  { name: 'Sugar', color: '#FFF', icon: 'sugar.svg' },
-  { name: 'Baking Powder', color: '#F5F5F5', icon: 'baking_powder.svg' },
+  { name: 'Cornmeal', color: '#FFD700', icon: cornmealIcon },
+  { name: 'Flour', color: '#FFF8DC', icon: flourIcon },
+  { name: 'Eggs', color: '#FFEB3B', icon: eggsIcon },
+  { name: 'Milk', color: '#B3E5FC', icon: milkIcon },
+  { name: 'Butter', color: '#FFE4B5', icon: butterIcon },
+  { name: 'Sugar', color: '#FFF', icon: sugarIcon },
+  { name: 'Baking Powder', color: '#F5F5F5', icon: bakingPowderIcon },
 ];
 
 function App() {
@@ -133,7 +141,7 @@ function App() {
               >
                 <span className="ingredient-icon-wrapper">
                   <img
-                    src={`/src/assets/ingredients/${ingredient.icon}`}
+                    src={ingredient.icon}
                     alt={ingredient.name}
                     className="ingredient-icon"
                   />
@@ -156,7 +164,7 @@ function App() {
               return (
                 <div className="selected-card" key={name} style={{ background: ingredient.color }}>
                   <img
-                    src={`/src/assets/ingredients/${ingredient.icon}`}
+                    src={ingredient.icon}
                     alt={ingredient.name}
                     className="selected-icon"
                   />
@@ -188,7 +196,7 @@ function App() {
           {falling.map((ingredient, idx) => (
             <img
               key={ingredient.name}
-              src={`/src/assets/ingredients/${ingredient.icon}`}
+              src={ingredient.icon}
               alt={ingredient.name}
               className="falling-icon"
               style={{ '--i': idx, '--n': falling.length }}
