@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" role="img" aria-label="Cornbread loaf">
+  <defs>
+    <linearGradient id="cbTop" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffd56b"/>
+      <stop offset="60%" stop-color="#f7b93a"/>
+      <stop offset="100%" stop-color="#e69d24"/>
+    </linearGradient>
+    <linearGradient id="cbSide" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7b23a"/>
+      <stop offset="100%" stop-color="#c47612"/>
+    </linearGradient>
+    <radialGradient id="cbHighlight" cx="45%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#fff3c9" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#fff3c9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Loaf top -->
+  <path d="M20 50 Q110 10 200 50 L200 95 Q110 135 20 95 Z" fill="url(#cbTop)" stroke="#b06a10" stroke-width="2"/>
+  <!-- Crust front -->
+  <path d="M20 50 L20 95 Q110 135 200 95 L200 50" fill="url(#cbSide)" stroke="#9a5608" stroke-width="2"/>
+  <!-- Score lines -->
+  <path d="M60 44 Q62 70 60 92" stroke="#cf8720" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M100 34 Q102 66 100 98" stroke="#cf8720" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
+  <path d="M140 38 Q142 68 140 96" stroke="#cf8720" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <!-- Highlight -->
+  <ellipse cx="110" cy="58" rx="70" ry="28" fill="url(#cbHighlight)"/>
+</svg>

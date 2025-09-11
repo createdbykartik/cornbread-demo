@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" role="img" aria-label="Mixing bowl">
+	<defs>
+		<linearGradient id="bowlOuter" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0%" stop-color="#dcdcdc" />
+			<stop offset="55%" stop-color="#f2f2f2" />
+			<stop offset="100%" stop-color="#c3c3c3" />
+		</linearGradient>
+		<linearGradient id="bowlInner" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0%" stop-color="#ffffff" />
+			<stop offset="60%" stop-color="#f5f5f5" />
+			<stop offset="100%" stop-color="#e8e8e8" />
+		</linearGradient>
+		<radialGradient id="innerShadow" cx="50%" cy="35%" r="65%">
+			<stop offset="0%" stop-color="#000" stop-opacity="0.18" />
+			<stop offset="55%" stop-color="#000" stop-opacity="0.05" />
+			<stop offset="100%" stop-color="#000" stop-opacity="0" />
+		</radialGradient>
+		<radialGradient id="highlight" cx="50%" cy="25%" r="60%">
+			<stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+			<stop offset="40%" stop-color="#ffffff" stop-opacity="0.25" />
+			<stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+		</radialGradient>
+	</defs>
+
+	<!-- Rim (top ellipse) -->
+	<ellipse cx="250" cy="110" rx="190" ry="58" fill="url(#bowlInner)" stroke="#b5b5b5" stroke-width="4" />
+
+	<!-- Inner cavity (gives depth) -->
+	<ellipse cx="250" cy="115" rx="170" ry="48" fill="url(#innerShadow)" />
+
+	<!-- Bowl body -->
+	<path d="M60 115 Q250 340 440 115 Q430 210 390 255 Q340 310 250 315 Q160 310 110 255 Q70 210 60 115 Z" fill="url(#bowlOuter)" stroke="#b7b7b7" stroke-width="4" />
+
+	<!-- Inner lip shading -->
+	<path d="M84 118 Q250 305 416 118 Q412 150 395 190 Q360 255 250 267 Q140 255 105 190 Q88 150 84 118 Z" fill="url(#bowlInner)" opacity="0.9" />
+
+	<!-- Highlight -->
+	<ellipse cx="250" cy="125" rx="150" ry="40" fill="url(#highlight)" />
+
+	<!-- Subtle bottom shadow to give lift -->
+	<ellipse cx="250" cy="322" rx="140" ry="18" fill="#000" opacity="0.06" />
+</svg>
