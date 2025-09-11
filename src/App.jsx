@@ -31,7 +31,7 @@ function App() {
   const [loginPass, setLoginPass] = useState('');
   const [loginError, setLoginError] = useState('');
   const STATIC_USER = 'iman';
-  const STATIC_PASS = 'cornbread';
+  const STATIC_PASS = 'baltimore';
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
