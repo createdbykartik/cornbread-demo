@@ -917,7 +917,8 @@
   background: #ffecc2;
 }
 
-/ * Mobile Responsive Styles */ @media (max-width: 767px) {
+/* Mobile Responsive Styles */
+@media (max-width: 767px) {
   .bowl-img {
     width: 180px !important;
   }
