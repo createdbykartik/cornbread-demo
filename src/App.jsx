@@ -50,6 +50,7 @@ function App() {
   const [batterReady, setBatterReady] = useState(false);
   const [baked, setBaked] = useState(false);
   const [baking, setBaking] = useState(false); // oven animation state
+  const [showIngredientsPrompt, setShowIngredientsPrompt] = useState(false);
 
   const handleAdd = (ingredient) => {
     if (!selected.includes(ingredient.name)) {
@@ -63,9 +64,16 @@ function App() {
 
   const handleMix = () => {
     if (selected.length === 0 || mixed || batterReady) return;
+
+    // Check if user has all ingredients
+    if (selected.length < INGREDIENTS.length) {
+      setShowIngredientsPrompt(true);
+      return;
+    }
+
     setMixed(true);
     setMixingProgress(0);
-    const step = 8 + Math.random()*4;
+    const step = 8 + Math.random() * 4;
     const interval = setInterval(() => {
       setMixingProgress(prev => {
         const next = prev + step;
@@ -93,11 +101,11 @@ function App() {
   const handleReset = () => {
     setSelected([]);
     setFalling([]);
-  setMixed(false);
-  setMixingProgress(0);
-  setBatterReady(false);
-  setBaked(false);
-  setBaking(false);
+    setMixed(false);
+    setMixingProgress(0);
+    setBatterReady(false);
+    setBaked(false);
+    setBaking(false);
   };
 
   if (!authenticated) {
@@ -109,11 +117,11 @@ function App() {
           <form onSubmit={handleLoginSubmit} className="login-form" autoComplete="off">
             <label className="login-field">
               <span>Username</span>
-              <input type="text" value={loginUser} onChange={(e)=>setLoginUser(e.target.value)} placeholder="Username" required />
+              <input type="text" value={loginUser} onChange={(e) => setLoginUser(e.target.value)} placeholder="Username" required />
             </label>
             <label className="login-field">
               <span>Password</span>
-              <input type="password" value={loginPass} onChange={(e)=>setLoginPass(e.target.value)} placeholder="••••••••" required />
+              <input type="password" value={loginPass} onChange={(e) => setLoginPass(e.target.value)} placeholder="••••••••" required />
             </label>
             {loginError && <div className="login-error" role="alert">{loginError}</div>}
             <button type="submit" className="login-btn">Login</button>
@@ -125,7 +133,7 @@ function App() {
 
   return (
     <div className="cornbread-container">
-      <div className="auth-bar"><button className="logout-btn" onClick={()=>{ setAuthenticated(false); setLoginUser(''); setLoginPass(''); }}>Logout</button></div>
+      <div className="auth-bar"><button className="logout-btn" onClick={() => { setAuthenticated(false); setLoginUser(''); setLoginPass(''); }}>Logout</button></div>
       <h1>Iman, Your Cornbread!</h1>
       <div className="kitchen-shelf">
         <div className="shelf-bar"></div>
@@ -147,7 +155,7 @@ function App() {
                   />
                 </span>
               </button>
-              <img src={jarImg} alt="Jar" className="jar-img" style={{zIndex: 1}} />
+              <img src={jarImg} alt="Jar" className="jar-img" style={{ zIndex: 1 }} />
               <span className="ingredient-label jar-label">{ingredient.name}</span>
             </div>
           ))}
@@ -179,12 +187,12 @@ function App() {
         <button className={`mix-btn${mixed ? ' mixing' : ''}`} onClick={handleMix} disabled={selected.length === 0 || mixed || batterReady}>
           {batterReady ? 'Mixed' : mixed ? 'Mixing...' : 'Mix Ingredients'}
         </button>
-  <button className="secondary-btn" onClick={handleBake} disabled={!batterReady || baked}> {baked ? 'Baked ✅' : baking ? 'Baking…' : 'Bake'} </button>
+        <button className="secondary-btn" onClick={handleBake} disabled={!batterReady || baked}> {baked ? 'Baked ✅' : baking ? 'Baking…' : 'Bake'} </button>
         <button className="secondary-btn" onClick={handleReset} disabled={mixed}>Reset</button>
       </div>
       {mixed && (
         <div className="mix-progress">
-          <div className="mix-bar"><span style={{width: `${mixingProgress}%`}} /></div>
+          <div className="mix-bar"><span style={{ width: `${mixingProgress}%` }} /></div>
           <div className="mix-note">Whisking... {Math.round(mixingProgress)}%</div>
         </div>
       )}
@@ -229,6 +237,30 @@ function App() {
           <p className="note-paragraph">Dear Iman, Here's the cornbread which I can make and send you. I know, this won't satisfy your cravings for it - just my way of making you smile :) Hope you get your cornbread soon!</p>
           <p className="note-paragraph ps">PS - I'm glad you won't exchange me for a lifetime supply of cornbread :)</p>
           <p className="note-paragraph ps">I Love You! ❤️</p>
+        </div>
+      )}
+
+      {showIngredientsPrompt && (
+        <div className="ingredients-prompt-overlay" onClick={() => setShowIngredientsPrompt(false)}>
+          <div className="ingredients-prompt" onClick={(e) => e.stopPropagation()}>
+            <div className="prompt-icon">🥣</div>
+            <h3>Umm, not enough ingredients!</h3>
+            <p>Let's add all of them for the perfect cornbread recipe?</p>
+            <div className="missing-ingredients">
+              <p>Still need:</p>
+              <div className="missing-list">
+                {INGREDIENTS.filter(ing => !selected.includes(ing.name)).map(ingredient => (
+                  <span key={ingredient.name} className="missing-item">
+                    <img src={ingredient.icon} alt={ingredient.name} className="missing-icon" />
+                    {ingredient.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <button className="prompt-btn" onClick={() => setShowIngredientsPrompt(false)}>
+              Got it! 👍
+            </button>
+          </div>
         </div>
       )}
     </div>
