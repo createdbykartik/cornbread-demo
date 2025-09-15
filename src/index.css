@@ -24,7 +24,10 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background:#ffffff;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,235,180,0.25), transparent 35%),
+    radial-gradient(circle at 80% 10%, rgba(255,200,120,0.18), transparent 40%),
+    linear-gradient(180deg, #ffffff 0%, #fff8e6 100%);
   color:#222;
 }
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 160" aria-label="Ladle" role="img">
+  <defs>
+    <linearGradient id="ladleHandle" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7a7a7a"/>
+      <stop offset="100%" stop-color="#4a4a4a"/>
+    </linearGradient>
+    <linearGradient id="ladleCup" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#cfd8dc"/>
+      <stop offset="100%" stop-color="#90a4ae"/>
+    </linearGradient>
+  </defs>
+  <rect x="36" y="10" width="8" height="90" rx="4" fill="url(#ladleHandle)"/>
+  <circle cx="40" cy="10" r="10" fill="#616161"/>
+  <path d="M30 100 q10 20 10 30 q0 12 12 12 h6 q12 0 12 -12 v-8 q0 -8 -8 -8 h-10 q-10 0 -22 -14z" fill="url(#ladleCup)" stroke="#607d8b" stroke-width="2"/>
+</svg>
